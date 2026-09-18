@@ -39,9 +39,6 @@ Habit-Tracker/
 │
 ├── main.py
 └── README.md
-
-⚙️ Graph Configuration
-
 Graph ID: graph1
 Name: Study Graph
 Unit: hours
