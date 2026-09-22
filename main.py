@@ -1,6 +1,11 @@
 import requests
-USERNAME = "tejassrajj"
-TOKEN = "XYZ"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+USERNAME = os.getenv("PIXELA_USERNAME")
+TOKEN = os.getenv("PIXELA_TOKEN")
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -10,9 +15,6 @@ user_params = {
     "agreeTermsOfService": "yes",
     "notMinor": "yes",
 }
-
-# response = requests.post(url=pixela_endpoint, json=user_params)
-# print(response.text)
 
 graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 
@@ -28,7 +30,10 @@ headers = {
     "X-USER_TOKEN": TOKEN
 }
 
-# requests.post()
+response = requests.post(
+    url=graph_endpoint,
+    json=graph_config,
+    headers=headers
+)
 
-response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 print(response.text)
